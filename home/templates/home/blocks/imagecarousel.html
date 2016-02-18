@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+         {% for item in self %}
+ 
+                {% image item.image width-1200 as carouselimagedata %}
+                <section class="imgPanel" id="imgPanel_{{item.image.id}}" style="">
+                	<img src="{{ carouselimagedata.url }}" />
+					<a data-rsw="{{ carouselimagedata.width }}" data-rsh="{{ carouselimagedata.height }}"  href="{{ carouselimagedata.url }}">{{ item.caption }}</a>
+					
+				</section>
+ 
+         {% endfor %}
+ 

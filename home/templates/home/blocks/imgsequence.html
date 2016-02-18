@@ -1,0 +1,33 @@
+{% load wagtailimages_tags %}
+<div class="spacer"></div>
+<div class="parallaxParent" id="parallax{{ self.parallax_image.id }}">
+	{% image self.parallax_image width-1200 as tmp_img %}
+    <div id="{{ tmp_img.id }}" style="background-image: url({{ tmp_img.url }});"></div>
+</div>
+<div class="spacer s1">
+    <div class="box blue">
+        {{ self.parallax_text }}
+    </div>
+</div>
+<div class="spacer s0"></div>
+
+<form class="move">
+	<fieldset>
+		<legend>Toggle duration</legend>
+		<div>
+			<input type="radio" name="duration" id="bound" value="300" checked="">
+			<label for="bound">bound to scrollbar (duration = 300)</label>
+		</div>
+		<div>
+			<input type="radio" name="duration" id="unbound" value="0">
+			<label for="unbound">unbound from scrollbar (duration = 0)</label>
+		</div>
+	</fieldset>
+</form>
+<div class="spacer s2"></div>
+<div class="spacer s0" id="trigger"></div>
+<div id="imagesequence">
+	{% image self.imgsequence_image width-400 as tmp_img %}
+	<img id="{{ tmp_img.id }}" src="{{ tmp_img.url }}">
+</div>
+<div class="spacer s2"></div>

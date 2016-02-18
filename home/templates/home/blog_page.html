@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/sticky.js' %}"></script>
+{% endblock %}
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+    <p>{{ self.author }}</p>
+    <p><em>{{ self.date }}</em></p>
+    {% for block in self.body %}
+        {% if block.block_type == 'heading' %}
+            <h1 class="">{{ block.value }}</h1>
+        {% else %}
+        	{% if block.block_type == 'image' %}
+                <section class="panel block-{{ block.block_type }}">{{ block }}</section>
+        	{% else %}
+                {% if block.block_type == 'pullquote' %}
+                    {{ block }}
+                {% else %}
+    	        <section class="panel block-{{ block.block_type }}">
+                    {{ block }}
+                </section>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+

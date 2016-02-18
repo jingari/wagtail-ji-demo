@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+
+{% image self.image width-1200 as tmp_img %}
+<section class="imgPanel" id="imgPanel{{self.image.id}}" style="">
+	{{ self.text }}
+	<img src="{{tmp_img.url}}" />
+</section>
